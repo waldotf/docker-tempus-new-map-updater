@@ -1,7 +1,25 @@
 FROM debian:jessie
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -qy install --no-install-recommends python ca-certificates build-essential python-dev atool bzip2 libffi-dev libssl-dev curl && rm -rf /var/lib/apt/lists/*
-RUN curl https://bootstrap.pypa.io/get-pip.py | python && pip install --no-cache-dir https://github.com/jsza/tempus-map-updater/zipball/master
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive \
+        apt-get -qy install --no-install-recommends \
+        python \
+        ca-certificates \
+        gcc \
+        libc6-dev \
+        python-dev \
+        atool \
+        bzip2 \
+        libffi6 \
+        libffi-dev \
+        libssl1.0.0 \
+        libssl-dev \
+        curl \
+   && rm -rf /var/lib/apt/lists/* \
+   && curl https://bootstrap.pypa.io/get-pip.py | python \
+   && pip install --no-cache-dir https://github.com/jsza/tempus-map-updater/zipball/master \
+   && apt-get remove libffi-dev libssl-dev gcc libc6-dev \
+   && apt-get autoremove
 RUN adduser --uid 5000 --disabled-password --gecos "" steam
 
 USER steam
