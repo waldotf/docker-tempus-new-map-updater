@@ -12,7 +12,7 @@ RUN apt-get update \
         bzip2 \
         libffi6 \
         libffi-dev \
-        libssl1.0.0 \
+        libssl1.1 \
         libssl-dev \
         curl \
    && rm -rf /var/lib/apt/lists/* \
