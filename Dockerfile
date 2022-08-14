@@ -17,7 +17,7 @@ RUN apt-get update \
         curl \
    && rm -rf /var/lib/apt/lists/* \
    && curl https://bootstrap.pypa.io/get-pip.py | python \
-   && pip install --no-cache-dir https://github.com/jsza/tempus-map-updater/zipball/master \
+   && pip install --no-cache-dir https://github.com/waldotf/tempus-map-updater/zipball/master \
    && /usr/local/bin/twistd \
    && DEBIAN_FRONTEND=noninteractive apt-get -qy remove libffi-dev libssl-dev gcc libc6-dev \
    && DEBIAN_FRONTEND=noninteractive apt-get -qy autoremove
