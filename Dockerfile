@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:bullseye
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive \
@@ -10,13 +10,13 @@ RUN apt-get update \
         python-dev \
         atool \
         bzip2 \
-        libffi6 \
+        libffi7 \
         libffi-dev \
         libssl1.1 \
         libssl-dev \
         curl \
    && rm -rf /var/lib/apt/lists/* \
-   && curl https://bootstrap.pypa.io/get-pip.py | python \
+   && curl https://bootstrap.pypa.io/pip/2.7/get-pip.py | python \
    && pip install --no-cache-dir https://github.com/waldotf/tempus-map-updater/zipball/master \
    && /usr/local/bin/twistd \
    && DEBIAN_FRONTEND=noninteractive apt-get -qy remove libffi-dev libssl-dev gcc libc6-dev \
